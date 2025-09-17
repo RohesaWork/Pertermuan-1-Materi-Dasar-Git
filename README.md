@@ -1,4 +1,4 @@
-# Tutorial Dasar Git & GitHub untuk Siswa RPL
+# Tutorial Dasar Git & GitHub
 
 Selamat datang di dunia Git dan GitHub! 👩‍💻👨‍💻 Git adalah *Version Control System* yang wajib dikuasai oleh seorang programmer untuk melacak perubahan pada kode, sementara GitHub adalah platform untuk menyimpan kode tersebut secara online dan berkolaborasi dengan orang lain.
 
@@ -101,11 +101,9 @@ Sekarang, kita akan membuat folder proyek pertama kita yang akan dilacak oleh Gi
 3.  **Isi File README.md**
     Ketik atau salin teks di bawah ini ke dalam file `README.md` yang baru kamu buat. Ganti isinya dengan datamu sendiri.
     ```markdown
-    # Biodata Saya
-
-    - **Nama:** Budi
-    - **Kelas:** XI RPL
-    - **Alamat:** Baleendah, Bandung
+    Nama: Budi
+    Kelas: XI RPL
+    Alamat: Baleendah, Bandung
     ```
 
 4.  **Simpan File** (`Ctrl + S`).
@@ -205,12 +203,10 @@ Bagaimana jika kita ingin mengubah sesuatu? Prosesnya menjadi lebih mudah.
 1.  **Update File `README.md`**
     Buka kembali VS Code. Tambahkan baris baru di bawah biodatamu.
     ```markdown
-    # Biodata Saya
-
-    - **Nama:** Budi
-    - **Kelas:** XI RPL
-    - **Alamat:** Baleendah, Bandung
-    - **Cita-cita:** Menjadi Software Engineer handal
+    Nama: Budi
+    Kelas: XI RPL
+    Alamat: Baleendah, Bandung
+    Cita-cita: Menjadi Software Engineer handal
     ```
     Simpan file (`Ctrl + S`).
 
