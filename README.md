@@ -40,27 +40,41 @@ Pertama, kita perlu memperkenalkan diri kita ke Git. Buka **Git Bash** (cari di 
 
 ## 2. Membuat Proyek (Repository Lokal)
 
-Sekarang, kita akan membuat folder proyek pertama kita yang akan dilacak oleh Git.
+Sekarang, kita akan membuat folder proyek pertama kita yang akan dilacak oleh Git. Agar seragam, kita akan memulainya dari direktori *home* pengguna.
 
-1.  **Masuk ke Folder Dokumen**
-    Kita akan membuat folder proyek di dalam direktori `Documents`. Gunakan perintah `cd` (*change directory*).
+1.  **Pastikan Berada di Direktori Utama (Home)**
+    Untuk memastikan kita semua memulai dari titik yang sama, jalankan perintah `cd` tanpa argumen apa pun. Perintah ini akan selalu membawa Anda kembali ke direktori *home* (`~`).
+    ```bash
+    cd
+    ```
+    
+
+2.  **Cek Lokasi Anda Saat Ini (Opsional)**
+    Gunakan perintah `pwd` (*print working directory*) untuk melihat di mana Anda berada. Hasilnya akan mirip seperti di bawah ini, menunjukkan folder pengguna Anda.
+    ```bash
+    pwd
+    ```
+    Output yang diharapkan: `/c/Users/NAMA_ANDA`
+
+3.  **Masuk ke Folder Dokumen**
+    Dari direktori *home*, kita akan pindah ke dalam folder `Documents`. Gunakan perintah `cd` (*change directory*).
     ```bash
     cd Documents
     ```
 
-2.  **Buat Folder Proyek Baru**
+4.  **Buat Folder Proyek Baru**
     Gunakan perintah `mkdir` (*make directory*) untuk membuat folder bernama `belajar-git`.
     ```bash
     mkdir belajar-git
     ```
 
-3.  **Masuk ke Folder Proyek**
+5.  **Masuk ke Folder Proyek**
     Pindah ke dalam folder yang baru saja kita buat.
     ```bash
     cd belajar-git
     ```
 
-4.  **Inisialisasi Git**
+6.  **Inisialisasi Git**
     Ini adalah langkah kuncinya. Perintah ini akan membuat sebuah "repository" atau "repo" lokal di dalam folder `belajar-git`. Folder ini sekarang resmi diawasi oleh Git.
     ```bash
     git init
@@ -89,7 +103,7 @@ Sekarang, kita akan membuat folder proyek pertama kita yang akan dilacak oleh Gi
     ```markdown
     # Biodata Saya
 
-    - **Nama:** Budiono Siregar Kapal Lawud
+    - **Nama:** Budi
     - **Kelas:** XI RPL
     - **Alamat:** Baleendah, Bandung
     ```
@@ -120,43 +134,51 @@ Sekarang, kita akan membuat folder proyek pertama kita yang akan dilacak oleh Gi
     ```
     > `-m` artinya *message*. Pesan commit yang baik menjelaskan perubahan yang kamu buat.
 
----
+---    
 
 ## 4. Menghubungkan ke GitHub
 
-Saatnya meng-upload proyek kita ke GitHub agar bisa diakses online.
+Saatnya meng-upload proyek kita ke GitHub agar bisa diakses online dan dilihat oleh orang lain.
 
 1.  **Daftar atau Login ke GitHub**
-    Jika belum punya akun, buka [github.com](https://github.com) dan daftar. Jika sudah, langsung login saja.
+    Jika belum punya akun, buka **[github.com](https.://github.com)** dan daftar. Jika sudah, langsung login.
 
 2.  **Buat Repository Baru**
     - Klik ikon `+` di pojok kanan atas, lalu pilih **New repository**.
     - Beri nama repository: `belajar-git`.
-    - Biarkan yang lain sebagai default (Public, tanpa inisialisasi README, .gitignore, atau license).
+    - Biarkan yang lain sebagai default (Public).
     - Klik **Create repository**.
     
 
 3.  **Membuat Personal Access Token (PAT)**
-    Untuk keamanan, GitHub sekarang mewajibkan penggunaan Token sebagai pengganti password saat melakukan *push* dari terminal.
-    - Buka halaman **Settings** di GitHub (klik foto profilmu > Settings).
+    Untuk keamanan, kita akan menggunakan *Token* sebagai pengganti password saat melakukan *push* dari terminal.
+    - Buka **Settings** di GitHub (klik foto profilmu > Settings).
     - Gulir ke bawah, cari dan klik **Developer settings**.
     - Klik **Personal access tokens** > **Tokens (classic)**.
     - Klik **Generate new token** > **Generate new token (classic)**.
-    - **Note:** Beri nama token, contoh: `git-bash-token`.
-    - **Expiration:** Pilih durasi token, misalnya 30 hari.
-    - **Select scopes:** Centang kotak `repo`.
+    - **Note:** Beri nama token, contohnya `token-untuk-git-bash`.
+    - **Expiration:** Pilih durasi token, misalnya **30 hari**.
+    - **Select scopes:** Centang kotak **`repo`**. Ini memberikan izin penuh untuk mengelola repository.
     - Gulir ke bawah dan klik **Generate token**.
-    - **PENTING:** Salin token yang muncul. Token ini hanya akan ditampilkan sekali. Simpan di tempat yang aman!
-    
+    - **PENTING:** Salin token yang muncul (contoh: `ghp_xxxxxxxx`). **Token ini hanya akan ditampilkan sekali.** Simpan di tempat yang aman seperti di Notepad untuk sementara!
 
-4.  **Hubungkan Repo Lokal ke GitHub**
-    Kembali ke halaman repository GitHub yang tadi kamu buat. Di sana ada beberapa baris perintah di bawah judul "...or push an existing repository from the command line". Kita akan menggunakan itu.
+4.  **Hubungkan Repo Lokal ke GitHub (Dengan Token)**
+    Sekarang, kita akan menggabungkan URL repository dengan token yang sudah kita buat.
 
-    Salin perintah `git remote add origin ...` yang diberikan oleh GitHub.
-    ```bash
-    git remote add origin [https://github.com/USERNAME/belajar-git.git](https://github.com/USERNAME/belajar-git.git)
-    ```
-    > Ganti `USERNAME` dengan username GitHub kamu. Perintah ini memberitahu Git lokal di mana alamat "remote" atau "pusat" dari proyek ini berada.
+    - Buka kembali Git Bash.
+    - Ketik perintah di bawah ini, tapi **pastikan kamu mengganti `USERNAME` dan `TOKEN`** sesuai dengan data milikmu.
+
+      ```bash
+      git remote add origin https://TOKEN@github.com/USERNAME/belajar-git.git
+      ```
+
+    - **Contoh Penggunaan:**
+      Jika username GitHub-mu adalah `budi` dan token-mu adalah `ghp_abcdef1234567890`, maka perintahnya akan menjadi seperti ini:
+
+      ```bash
+      git remote add origin https://ghp_abcdef1234567890@github.com/budi/belajar-git.git
+      ```
+    - Salin perintah yang sudah kamu sesuaikan, *paste* ke Git Bash, lalu tekan **Enter**.
 
 5.  **(Opsional) Ganti Nama Branch ke `main`**
     Secara default, Git versi baru menggunakan nama branch `main`. Jika di komputermu masih menggunakan `master`, ganti dengan perintah ini agar seragam.
@@ -165,29 +187,27 @@ Saatnya meng-upload proyek kita ke GitHub agar bisa diakses online.
     ```
 
 6.  **Push ke GitHub!** 🎉
-    Saatnya mengirim *commit* pertama kita dari lokal ke server GitHub.
+    Kirim *commit* pertamamu dari komputer lokal ke server GitHub.
     ```bash
     git push -u origin main
     ```
-    - Terminal akan meminta **Username** kamu. Masukkan username GitHub-mu, tekan Enter.
-    - Kemudian akan meminta **Password**. **JANGAN masukkan password GitHub-mu**. Masukkan **Personal Access Token (PAT)** yang sudah kamu salin tadi.
-    - Tekan Enter.
+    > Karena token sudah ada di dalam URL, Git **tidak akan meminta username atau password lagi**.
 
 7.  **Cek Hasilnya**
-    Refresh halaman repository `belajar-git` di browser. File `README.md` kamu sekarang seharusnya sudah muncul di sana!
+    Refresh halaman repository `belajar-git` di browser. File `README.md` kamu sekarang seharusnya sudah muncul di sana! Hebat! 👍
 
 ---
 
 ## 5. Membuat Perubahan dan Push Kembali
 
-Bagaimana jika kita ingin mengubah sesuatu? Prosesnya sama!
+Bagaimana jika kita ingin mengubah sesuatu? Prosesnya menjadi lebih mudah.
 
 1.  **Update File `README.md`**
     Buka kembali VS Code. Tambahkan baris baru di bawah biodatamu.
     ```markdown
     # Biodata Saya
 
-    - **Nama:** Budiono Siregar Kapal Lawud
+    - **Nama:** Budi
     - **Kelas:** XI RPL
     - **Alamat:** Baleendah, Bandung
     - **Cita-cita:** Menjadi Software Engineer handal
@@ -196,18 +216,42 @@ Bagaimana jika kita ingin mengubah sesuatu? Prosesnya sama!
 
 2.  **Ulangi Proses Add & Commit**
     Kembali ke Git Bash.
-    - Cek status: `git status` (akan terlihat `README.md` termodifikasi).
-    - Tambahkan ke staging: `git add README.md`
-    - Buat commit baru: `git commit -m "docs: menambahkan cita-cita di readme"`
+    ```bash
+    git add README.md
+    git commit -m "docs: menambahkan cita-cita di readme"
+    ```
 
 3.  **Push Perubahan**
-    Karena kita sudah menghubungkan remote sebelumnya, sekarang prosesnya lebih singkat.
+    Cukup jalankan `git push`. Tidak perlu lagi memasukkan token.
     ```bash
     git push
     ```
-    > Karena sebelumnya kita menggunakan `-u`, Git sudah ingat ke mana harus mengirim perubahan untuk branch `main`.
 
 4.  **Selesai!**
     Refresh lagi halaman repository GitHub-mu. Kamu akan melihat baris "Cita-cita" sudah ditambahkan.
+
+---
+
+## Catatan Perintah (Command Cheat Sheet)
+
+Berikut adalah rangkuman singkat dari perintah-perintah yang telah kita gunakan dalam tutorial ini.
+
+### Perintah Navigasi (Terminal/Bash)
+-   **`cd`**: Pindah direktori (contoh: `cd Documents` untuk masuk ke folder Documents, `cd` saja untuk kembali ke *home*).
+-   **`pwd`**: Menampilkan lokasi direktori kamu saat ini.
+-   **`mkdir`**: Membuat folder baru (contoh: `mkdir belajar-git`).
+-   **`code .`**: Membuka folder saat ini di Visual Studio Code.
+
+### Perintah Git
+-   **`git config`**: Mengatur konfigurasi Git (nama, email, dll).
+-   **`git init`**: Membuat repository Git baru di sebuah folder.
+-   **`git status`**: Melihat status perubahan file (mana yang sudah di-*add* atau belum).
+-   **`git add`**: Menambahkan file ke *staging area*, siap untuk di-*commit*.
+-   **`git commit -m "pesan"`**: Menyimpan perubahan yang ada di *staging area* dengan sebuah pesan deskriptif.
+-   **`git remote add origin <url>`**: Menghubungkan repository lokal ke repository online di GitHub.
+-   **`git branch -M <nama-baru>`**: Mengganti nama *branch* saat ini.
+-   **`git push`**: Mengirim *commit* dari repository lokal ke repository online di GitHub.
+
+---
 
 **Selamat! Kamu sudah berhasil melalui siklus dasar penggunaan Git dan GitHub. Teruslah berlatih, karena ini adalah skill fundamental bagi seorang developer.** 👍
